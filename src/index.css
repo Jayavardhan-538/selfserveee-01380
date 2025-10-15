@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic Ad Campaign Builder Design System */
+
+@layer base {
+  :root {
+    /* Futuristic Dark Theme */
+    --background: 220 27% 4%;
+    --background-secondary: 220 27% 6%;
+    --foreground: 0 0% 98%;
+
+    /* Glass Morphism */
+    --glass: 220 27% 8%;
+    --glass-border: 220 27% 20%;
+    
+    --card: 220 27% 6%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 27% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Futuristic Gradients */
+    --primary: 250 95% 60%;
+    --primary-glow: 250 95% 70%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 27% 12%;
+    --secondary-foreground: 0 0% 90%;
+
+    --accent: 180 95% 50%;
+    --accent-glow: 180 95% 60%;
+    --accent-foreground: 220 27% 4%;
+
+    --muted: 220 27% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 27% 20%;
+    --input: 220 27% 12%;
+    --ring: 250 95% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--background)), hsl(var(--background-secondary)));
+    --gradient-glass: linear-gradient(135deg, 
+      hsla(var(--glass), 0.8), 
+      hsla(var(--glass), 0.4)
+    );
+    
+    --shadow-glow: 0 0 40px hsla(var(--primary), 0.3);
+    --shadow-accent-glow: 0 0 30px hsla(var(--accent), 0.3);
+    --shadow-elegant: 0 10px 30px -10px hsla(0, 0%, 0%, 0.5);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-secondary);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glass Morphism Components */
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .glass-hover {
+    transition: var(--transition-smooth);
+  }
+
+  .glass-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Banner Animation Effects */
+  .banner-hover {
+    transition: var(--transition-spring);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .banner-hover:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-accent-glow);
+  }
+
+  .banner-hover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+      transparent, 
+      hsla(var(--accent), 0.1), 
+      transparent
+    );
+    transform: rotate(45deg) translate(-100%, -100%);
+    transition: var(--transition-smooth);
+    opacity: 0;
+  }
+
+  .banner-hover:hover::before {
+    animation: shimmer 0.8s ease-out;
+    opacity: 1;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animated Button */
+  .btn-futuristic {
+    position: relative;
+    background: var(--gradient-primary);
+    transition: var(--transition-smooth);
+    overflow: hidden;
+  }
+
+  .btn-futuristic:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-futuristic::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      hsla(255, 255%, 255%, 0.2), 
+      transparent
+    );
+    transition: var(--transition-smooth);
+  }
+
+  .btn-futuristic:hover::after {
+    left: 100%;
+  }
+}
+
+@layer utilities {
+  /* Animation Keyframes */
+  @keyframes shimmer {
+    0% {
+      transform: rotate(45deg) translate(-100%, -100%);
+    }
+    100% {
+      transform: rotate(45deg) translate(100%, 100%);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsla(var(--primary), 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsla(var(--primary), 0.6);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
